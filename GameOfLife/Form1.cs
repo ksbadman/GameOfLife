@@ -78,72 +78,41 @@ namespace GameOfLife
 
         }
 
-        private void btnGo_Click(object sender, EventArgs e, int row, int col)
-        {
-            for (row = 0; row < 19; row++)
-            {
-                for (col = 0; col < 19; col++)
-                {
-                    if (grid[row, col] == deadColor)
-                    {
-                        if (CheckBaby(row, col) == true)
-                        {
-                            grid[row, col] = aliveColor;
-                            this.Controls["lbl" + row + "0"].BackColor = aliveColor;
-                        }
-                    }
-                    else
-                    {
-                        if (CheckLonely(row, col) == true || CheckCrowded(row, col) == true)
-                        {
-                            grid[row, col] = deadColor;
-                            this.Controls["lbl" + row + "0"].BackColor = deadColor;
-                        }
-                        if (CheckLives(row, col) == true)
-                        {
-                            grid[row, col] = aliveColor;
-                            this.Controls["lbl" + row + "0"].BackColor = aliveColor;
-                        }
-                    }
-                }
-            }
-        }//loop to be added to make game run automatically, rather than 1 click per step
-            
         bool CheckLonely(int row, int col)
         {
             bool Lonely = false;
             int neighbourCount = 0;
-            if (ValidCell(row, col + 1) )
+            if (ValidCell(row, col + 1))
             {
                 if (grid[row, col + 1] == aliveColor)//Checks cell to the right
                 {
                     neighbourCount++;
                 }
             }
-            if (ValidCell(row + 1, col + 1) )
-            {   
+            if (ValidCell(row + 1, col + 1))
+            {
                 if (grid[row + 1, col + 1] == aliveColor)//Checks cell below and to the right
                 {
-                        neighbourCount++;
+                    neighbourCount++;
                 }
-                if (ValidCell(row + 1, col) )
+                if (ValidCell(row + 1, col))
                 {
                     if (grid[row + 1, col] == aliveColor)//Checks cell below
                     {
                         neighbourCount++;
                     }
                 }
-                if (ValidCell(row + 1, col - 1) )
+                if (ValidCell(row + 1, col - 1))
                 {
                     if (grid[row + 1, col - 1] == aliveColor)//Checks cell below and to the left
                     {
                         neighbourCount++;
                     }
                 }
-                if (ValidCell(row, col - 1) )
+                if (ValidCell(row, col - 1))
                 {
                     if (grid[row, col - 1] == aliveColor)//Checks cell to the left
-                    {   
+                    {
                         neighbourCount++;
                     }
                 }
@@ -154,27 +123,27 @@ namespace GameOfLife
                         neighbourCount++;
                     }
                 }
-                if (ValidCell(row - 1, col) )
+                if (ValidCell(row - 1, col))
                 {
                     if (grid[row - 1, col] == aliveColor)//Checks cell above 
                     {
                         neighbourCount++;
                     }
                 }
-                if (ValidCell(row - 1, col + 1) )
+                if (ValidCell(row - 1, col + 1))
                 {
                     if (grid[row - 1, col + 1] == aliveColor)//Checks cell above and to the right
                     {
                         neighbourCount++;
                     }
                 }
-            if (neighbourCount <= 1)
-            {
-                Lonely = true;
+                if (neighbourCount <= 1)
+                {
+                    Lonely = true;
+                }
             }
-        }
             return Lonely;
-    }//Checks if cell has 0-1 neighbours
+        }//Checks if cell has 0-1 neighbours
 
         bool CheckCrowded(int row, int col)
         {
@@ -454,7 +423,43 @@ namespace GameOfLife
             {
                 return false;
             }
-        }//Makes sure all cells checked are within the bounds of the array
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnRun_Click_1(object sender, EventArgs e)
+        {
+            for (int row = 0; row < 19; row++)
+            {
+                for (int col = 0; col < 19; col++)
+                {
+                    if (grid[row, col] == Color.DarkGray)
+                    {
+                        if (CheckBaby(row, col) == true)
+                        {
+                            grid[row, col] = aliveColor;
+                            flowLayoutPanel1.Controls["lbllife-" + row + "-" + col].BackColor = aliveColor;
+                        }
+                    }
+                    else
+                    {
+                        if (CheckLonely(row, col) == true || CheckCrowded(row, col) == true)
+                        {
+                            grid[row, col] = Color.DarkGray;
+                            flowLayoutPanel1.Controls["lbllife-" + row + "-" + col].BackColor = Color.DarkGray;
+                        }
+                        if (CheckLives(row, col) == true)
+                        {
+                            grid[row, col] = aliveColor;
+                            flowLayoutPanel1.Controls["lbllife-" + row + "-" + col].BackColor = aliveColor;
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }

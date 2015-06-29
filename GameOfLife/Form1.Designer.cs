@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGo = new System.Windows.Forms.Button();
+            this.btnRun = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -40,22 +40,22 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(536, 556);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // btnGo
+            // btnRun
             // 
-            this.btnGo.Location = new System.Drawing.Point(554, 12);
-            this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(75, 47);
-            this.btnGo.TabIndex = 1;
-            this.btnGo.Text = "LET THE GAME BEGIN!";
-            this.btnGo.UseVisualStyleBackColor = true;
-            this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
+            this.btnRun.Location = new System.Drawing.Point(554, 12);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 47);
+            this.btnRun.TabIndex = 1;
+            this.btnRun.Text = "LET THE GAME BEGIN!";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 573);
-            this.Controls.Add(this.btnGo);
+            this.Controls.Add(this.btnRun);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -67,7 +67,7 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnGo;
+        private System.Windows.Forms.Button btnRun;
     }
 }
 
